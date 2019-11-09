@@ -34,4 +34,20 @@ public class ProjectService {
         return project;
     }
 
+    //the basic way to extract a list is to traverse to it by iterable it returns the json object within the list
+    public Iterable<Project> findAllProjects(){
+        return projectRepositories.findAll();
+    }
+
+    //Delete
+    public void deleteProjectById(String projectId){
+        Project project = projectRepositories.findByProjectIdentifier(projectId.toUpperCase());
+        if(project==null){
+            throw new ProjectIdException("Project ID with '"+projectId+"' doesnt exists");
+        }
+        projectRepositories.delete(project);
+    }
+
+    public 
+
 }
